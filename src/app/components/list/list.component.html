@@ -1,18 +1,16 @@
 <div *ngIf="characters.length === 0; else content">
-    <!-- Mostrar el spinner mientras se cargan los datos -->
     <mat-spinner color="primary"></mat-spinner>
 </div>
 <ng-template #content>
     <div>
         <h1>Characters</h1>
-        <div>
-            <button mat-button (click)="switchToTable()">Tabla</button>
-            <button mat-button (click)="switchToGrid()">Cuadrícula</button>
+        <div class="d-flex justify-content-end">
+            <button mat-button matTooltip="Ver como tabla" (click)="switchToTable()"><i class="fas fa-table"></i></button>
+            <button mat-button matTooltip="Ver como cuadrícula" (click)="switchToGrid()"><i class="fas fa-th"></i></button>
         </div>
 
         <div *ngIf="!isGridView">
             <table mat-table [dataSource]="characters">
-                <!-- Cabecera de la tabla -->
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef>ID</th>
                     <td mat-cell *matCellDef="let character">{{ character.id }}</td>
@@ -33,18 +31,9 @@
                     <td mat-cell *matCellDef="let character">{{ character.type }}</td>
                 </ng-container>
             
-                <!-- Resto del código de la tabla -->
-            
-                <!-- Definición de las filas -->
                 <tr mat-header-row *matHeaderRowDef="['id', 'name', 'species', 'type']"></tr>
                 <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'species', 'type'];" [routerLink]="['/detail', row.id]"></tr>
             </table>
-            <!-- <ul class="list-group">
-                <a *ngFor="let character of characters" [routerLink]="['/detail', character.id]"
-                    class="list-group-item list-group-item-action animate__animated animate__bounce animate_fadeIn">
-                    {{character.id}} - {{character.name}}
-                </a>
-            </ul> -->
         </div>
         
         <div *ngIf="isGridView">
@@ -61,6 +50,5 @@
                 </a>
             </div>
         </div>
-        
     </div>
 </ng-template>
