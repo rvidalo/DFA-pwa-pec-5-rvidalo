@@ -13,7 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatCardModule,
     MatTableModule,
     MatButtonModule,
+    MatExpansionModule,
     MatTooltipModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),

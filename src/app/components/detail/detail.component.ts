@@ -11,6 +11,7 @@ import { RickandmortyService } from 'src/app/services/rickandmorty.service';
 export class DetailComponent implements OnInit{
 
   character!: Character;
+  showAllDetails = false;
 
   constructor(
     private rickandmortyService: RickandmortyService,
